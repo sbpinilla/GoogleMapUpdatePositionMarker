@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mapa</title>
+
+    <style>
+            #map {
+             height: 400px;
+             width: 100%;
+            }
+         </style>
+
+</head>
+<body>
+    
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    
+</body>
+
+<!--<script async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlFkX9UHzI71YgHVYK3JalKK59JUycqhw&callback=initMap"></script> -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script src="https://code.jquery.com/jquery.min.js"></script>
+<script src="js/jquery.easing.1.3.js" ></script>
+<script src="js/SlidingMarker.js" ></script>
+<script src="js/markerAnimate.js" ></script>
+<script>
+    
+
+    SlidingMarker.initializeGlobally();
+    var markers = [];
+    initMap();
+
+
+    function initMap() {
+    
+        var uluru = {lat: -25.363, lng: 131.044};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 14,
+            center: uluru
+        });
+        
+
+
+        var punto =  new google.maps.Marker({
+            position: uluru,
+            map: map,
+            title: "I'm sliding marker",
+            //duration: 2000,
+          //  easing: "easeOutExpo"
+        });
+
+        markers.push(punto);
+
+        getData();
+    }
+
+    function getData(){
+
+        setInterval(function(){
+
+            for (var i =0; i < markers.length; i++) {
+
+                var marked = markers[i];
+
+                var vlat = marked.getPosition().lat();
+                var vlng = marked.getPosition().lng();     
+
+                vlat = vlat +(0.10);   
+                vlng = vlng +(0.10);  
+                
+
+                marked.setPosition(new google.maps.LatLng(vlat, vlng))
+              //  var uluru = {lat: vlat, lng: vlng};
+
+               // alert("marked id"+marked.get("id"));
+
+            }
+
+        }, 10000);
+
+    }
+
+</script>
+
+
+
+</html>
