@@ -22,13 +22,16 @@
 </body>
 
 <!--<script async  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAlFkX9UHzI71YgHVYK3JalKK59JUycqhw&callback=initMap"></script> -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<!--<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAlFkX9UHzI71YgHVYK3JalKK59JUycqhw"></script>
 <script src="https://code.jquery.com/jquery.min.js"></script>
-<script src="js/jquery.easing.1.3.js" ></script>
+<script src="js/jquery.easing.1.3.js" ></script>    
 <script src="js/SlidingMarker.js" ></script>
 <script src="js/markerAnimate.js" ></script>
 <script>
     
+
 
     SlidingMarker.initializeGlobally();
     var markers = [];
@@ -40,7 +43,7 @@
         var uluru = {lat: -25.363, lng: 131.044};
 
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 14,
+            zoom: 10,
             center: uluru
         });
         
